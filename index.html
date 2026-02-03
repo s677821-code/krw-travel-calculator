@@ -4,77 +4,118 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>韓元旅遊記帳</title>
+
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       padding: 15px;
       background: #f7f7f7;
     }
-    h2 { margin-top: 0; }
+
+    h2, h3 {
+      margin: 10px 0;
+    }
+
     input, select, button {
       width: 100%;
       padding: 10px;
       margin: 6px 0;
       font-size: 16px;
+      box-sizing: border-box;
     }
+
     button {
       background: #4CAF50;
       color: white;
       border: none;
       border-radius: 6px;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 10px;
       background: white;
     }
+
     th, td {
       border-bottom: 1px solid #ddd;
       padding: 8px;
       text-align: center;
       font-size: 14px;
     }
+
+    td button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .summary {
+      background: white;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
     .total {
       font-size: 20px;
       margin-top: 10px;
       text-align: right;
+      font-weight: bold;
     }
   </style>
 </head>
+
 <body>
 
-<h2>🇰🇷 韓元旅遊記帳</h2>
+<h2>🇰🇷 韓國旅遊記帳</h2>
 
-匯率（1 KRW = TWD）
+<label>匯率（1 KRW = TWD）</label>
 <input id="rate" type="number" step="0.0001" value="0.024">
 
 <h3>➕ 新增消費</h3>
+
 <input id="item" placeholder="消費項目（例：咖啡）">
+
 <select id="category">
   <option>餐飲</option>
   <option>交通</option>
   <option>購物</option>
   <option>其他</option>
 </select>
-<input id="krw" type="number" placeholder="金額（KRW）">
+
+<select id="currency">
+  <option value="KRW">韓元（KRW）</option>
+  <option value="TWD">台幣（TWD）</option>
+</select>
+
+<input id="krw" type="number" placeholder="金額">
+
 <button onclick="addExpense()">加入記帳</button>
 
 <table>
   <thead>
     <tr>
       <th>項目</th>
-      <th>KRW</th>
+      <th>金額</th>
       <th>TWD</th>
+      <th>🗑️</th>
     </tr>
   </thead>
   <tbody id="list"></tbody>
 </table>
+
+<h3>📊 類別小計（TWD）</h3>
+<div id="summary" class="summary"></div>
 
 <div class="total">
   總計：<span id="total">0</span> TWD
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
