@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>韓元旅遊記帳</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 15px;
+      background: #f7f7f7;
+    }
+    h2 { margin-top: 0; }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      font-size: 16px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background: white;
+    }
+    th, td {
+      border-bottom: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .total {
+      font-size: 20px;
+      margin-top: 10px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🇰🇷 韓元旅遊記帳</h2>
+
+匯率（1 KRW = TWD）
+<input id="rate" type="number" step="0.0001" value="0.024">
+
+<h3>➕ 新增消費</h3>
+<input id="item" placeholder="消費項目（例：咖啡）">
+<select id="category">
+  <option>餐飲</option>
+  <option>交通</option>
+  <option>購物</option>
+  <option>其他</option>
+</select>
+<input id="krw" type="number" placeholder="金額（KRW）">
+<button onclick="addExpense()">加入記帳</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>KRW</th>
+      <th>TWD</th>
+    </tr>
+  </thead>
+  <tbody id="list"></tbody>
+</table>
+
+<div class="total">
+  總計：<span id="total">0</span> TWD
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
